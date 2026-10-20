@@ -148,8 +148,8 @@ pub(all) struct ChemdescfingerprintMatrix {
 }
 
 pub fn chem_desc_fingerprint_make_matrix(rows : Int, cols : Int, val : Double) -> ChemdescfingerprintMatrix {
-  let data = Array::make(rows, Array::make(cols, val))
-  for i in 0..<rows { data[i] = Array::make(cols, val) }
+  let data = []
+  for _ in 0..<rows { data.push(Array::make(cols, val)) }
   { data, rows, cols }
 }
 

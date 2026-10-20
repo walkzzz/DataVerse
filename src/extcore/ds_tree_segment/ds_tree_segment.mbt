@@ -148,8 +148,8 @@ pub(all) struct DstreesegmentMatrix {
 }
 
 pub fn ds_tree_segment_make_matrix(rows : Int, cols : Int, val : Double) -> DstreesegmentMatrix {
-  let data = Array::make(rows, Array::make(cols, val))
-  for i in 0..<rows { data[i] = Array::make(cols, val) }
+  let data = []
+  for _ in 0..<rows { data.push(Array::make(cols, val)) }
   { data, rows, cols }
 }
 

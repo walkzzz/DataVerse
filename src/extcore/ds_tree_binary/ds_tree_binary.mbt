@@ -148,8 +148,8 @@ pub(all) struct DstreebinaryMatrix {
 }
 
 pub fn ds_tree_binary_make_matrix(rows : Int, cols : Int, val : Double) -> DstreebinaryMatrix {
-  let data = Array::make(rows, Array::make(cols, val))
-  for i in 0..<rows { data[i] = Array::make(cols, val) }
+  let data = []
+  for _ in 0..<rows { data.push(Array::make(cols, val)) }
   { data, rows, cols }
 }
 

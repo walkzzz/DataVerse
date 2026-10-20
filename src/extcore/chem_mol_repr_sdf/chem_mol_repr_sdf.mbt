@@ -148,8 +148,8 @@ pub(all) struct ChemmolreprsdfMatrix {
 }
 
 pub fn chem_mol_repr_sdf_make_matrix(rows : Int, cols : Int, val : Double) -> ChemmolreprsdfMatrix {
-  let data = Array::make(rows, Array::make(cols, val))
-  for i in 0..<rows { data[i] = Array::make(cols, val) }
+  let data = []
+  for _ in 0..<rows { data.push(Array::make(cols, val)) }
   { data, rows, cols }
 }
 

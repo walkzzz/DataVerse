@@ -148,8 +148,8 @@ pub(all) struct MathapproxpadeMatrix {
 }
 
 pub fn math_approx_pade_make_matrix(rows : Int, cols : Int, val : Double) -> MathapproxpadeMatrix {
-  let data = Array::make(rows, Array::make(cols, val))
-  for i in 0..<rows { data[i] = Array::make(cols, val) }
+  let data = []
+  for _ in 0..<rows { data.push(Array::make(cols, val)) }
   { data, rows, cols }
 }
 

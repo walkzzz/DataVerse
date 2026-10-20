@@ -148,8 +148,8 @@ pub(all) struct FinancetimeextremeMatrix {
 }
 
 pub fn finance_time_extreme_make_matrix(rows : Int, cols : Int, val : Double) -> FinancetimeextremeMatrix {
-  let data = Array::make(rows, Array::make(cols, val))
-  for i in 0..<rows { data[i] = Array::make(cols, val) }
+  let data = []
+  for _ in 0..<rows { data.push(Array::make(cols, val)) }
   { data, rows, cols }
 }
 

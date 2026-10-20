@@ -148,8 +148,8 @@ pub(all) struct StatstestfMatrix {
 }
 
 pub fn stats_test_f_make_matrix(rows : Int, cols : Int, val : Double) -> StatstestfMatrix {
-  let data = Array::make(rows, Array::make(cols, val))
-  for i in 0..<rows { data[i] = Array::make(cols, val) }
+  let data = []
+  for _ in 0..<rows { data.push(Array::make(cols, val)) }
   { data, rows, cols }
 }
 

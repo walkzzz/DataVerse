@@ -4,6 +4,19 @@
 
 ## [0.1.0-dev] - 2026-10-20
 
+### 删除通用函数委托 — 消除无用包装
+
+**删除 / Removed**
+- 删除 825 包 × 25 = 20,625 个单行委托函数（mean/var/std/cov/corr/median/accuracy/mse/rmse/mae/r2/precision/recall/f1/sort/sort_desc/factorial/gcd/lcm/is_prime/fibonacci/normalize/standardize/clip/min/max/cumsum/reverse/concat）
+- 消费者直接用 `@_common.xxx` 而非 `{p}_xxx`
+- 删除 4 个重复测试和 6 个未使用导入
+- warnings: 506 → 501
+
+| commit | 内容 | 行数变化 |
+|--------|------|----------|
+| b98fba0a | 删除25个通用函数委托 | 1,056,111 → 1,008,261 |
+| 96c25b6a | 删除重复测试和未使用导入 | -4 tests, -5 warnings |
+
 ### 方法链改进 — free fn → method（moonbit-refactoring）
 
 **重构 / Refactored**

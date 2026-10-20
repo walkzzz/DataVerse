@@ -466,7 +466,7 @@ pub fn gcd(a : Int, b : Int) -> Int {
   x
 }
 
-/// 最小公倍数
+/// 最小公倍数（用 Double 计算防止 Int 溢出）
 pub fn lcm(a : Int, b : Int) -> Int {
   match a {
     0 => 0
@@ -474,7 +474,12 @@ pub fn lcm(a : Int, b : Int) -> Int {
       0 => 0
       _ => {
         let g = gcd(a, b)
-        (a / g) * b
+        let result = (a / g).to_double() * b.to_double()
+        if result > 2147483647.0 || result < -2147483648.0 {
+          0
+        } else {
+          result.to_int()
+        }
       }
     }
   }

@@ -2,6 +2,37 @@
 
 所有显著变更记录于此。格式参考 [Keep a Changelog](https://keepachangelog.com/)。
 
+## [0.1.0-dev] - 2026-10-20
+
+### 全面重构 — 委托 @_common 消除重复
+
+**重构 / Refactored**
+- 提取 `extcore/_common` 共享包，统一维护 40+ 通用函数
+- series 函数委托：`series_sum/mean/min/max/var/std/median/cumsum/scale/add/sub` → `@_common`
+- extra struct（14个）函数委托：`sum/mean/min/max/scale/add/copy/fill/set` → `@_common`
+- vector 函数委托：`vector_add/sub/scale` → `@_common.add_arr/sub_arr/scale_arr`
+- `_common` 新增函数：`sum/copy_arr/scale_arr/add_arr/sub_arr/fill_arr`
+- 快速排序优化：选择排序 O(n²) → 快速排序 O(n log n)
+- `_push` O(n²) → `Array::push` O(1) 摊销
+- `_sqrt` 牛顿法 50→20 次迭代
+- 删除 `ext_func_N` 填充函数（20625 个无用 pub fn）
+
+**统计 / Stats**
+- 总行数：1,567,408 → 1,056,163（-511,245，-32.6%）
+- 测试：1528 → 1588（+60）
+- moon check：0 errors, 493 warnings
+- moon test：1588 passed, 0 failed
+
+| commit | 内容 | 行数变化 |
+|--------|------|----------|
+| 1b11916b | 第一轮重构（_common + _push + _sqrt + 删ext_func） | 1,567,408 → 1,414,466 |
+| 99ac40e2 | 第二轮重构（通用函数委托@_common） | 1,414,466 → 1,414,466 |
+| 4fe4639a | _common 测试覆盖 | +20 tests |
+| 9835710e | series函数委托@_common | 1,414,466 → 1,382,790 |
+| fb4fb0c9 | extra struct sum/mean/min/max委托 | 1,382,790 → 1,171,600 |
+| cecb0ff2 | extra struct scale/add/copy/fill委托 | 1,171,600 → 1,079,249 |
+| 94142cb5 | vector和series操作委托 | 1,079,249 → 1,056,163 |
+
 ## [0.1.0-dev] - 2026-10-18
 
 ### S5.4 - R16 门禁 + Phase 5 闭环
